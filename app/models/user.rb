@@ -37,6 +37,9 @@ class User < ApplicationRecord
     "#{family_name_kana} #{first_name_kana}"
   end
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>"}
+  validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
+
 
   private
   def has_group_key?

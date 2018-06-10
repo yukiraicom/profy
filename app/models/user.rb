@@ -12,6 +12,10 @@ class User < ApplicationRecord
   #validation
   before_validation :group_key_to_id, if: :has_group_key?
 
+  #association
+  belongs_to :group
+  has_many :questions, ->{ order("created_at DESC") }
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     group_key = conditions.delete(:group_key)

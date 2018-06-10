@@ -17,4 +17,6 @@
       <%= f.submit "質問する" %>
     <% end %>
   </div>
+
+  <%= render partial: "questions/question", collection: @questions %>
 <% end %>

@@ -11,5 +11,12 @@
       <span class="q">Q</span>
       <span class="question_text"><%= question.text %></span>
     </div>
+    <div class="questioned">
+      <span>回答<%= question.answers.count %>件</span>
+    </div>
+    <%= form_tag(new_answer_path, method: :get, class: "question_submit") do %>
+      <%= hidden_field_tag(:question_id, question.id) %>
+      <%= submit_tag("回答する") %>
+    <% end %>
   </div>
 </div>

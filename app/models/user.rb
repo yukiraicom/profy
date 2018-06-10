@@ -40,6 +40,12 @@ class User < ApplicationRecord
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>"}
   validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
 
+  def full_profile?
+    avatar? && family_name? && first_name? && family_name_kana? && first_name_kana?
+  end
+
+  #カラム名 + ? と書くと、指定したカラムに値が存在しないときにfalseを返すというActiverecordの機能を利用
+
 
   private
   def has_group_key?

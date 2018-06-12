@@ -14,9 +14,15 @@
     <div class="questioned">
       <span>回答<%= question.answers.count %>件</span>
     </div>
-    <%= form_tag(new_answer_path, method: :get, class: "question_submit") do %>
-      <%= hidden_field_tag(:question_id, question.id) %>
-      <%= submit_tag("回答する") %>
+    <% unless question.answers.exists?(user_id: current_user.id) %>
+      <%= form_tag(new_answer_path, method: :get, class: "question_submit") do %>
+        <%= hidden_field_tag(:question_id, question.id) %>
+        <%= submit_tag("回答する") %>
+      <% end %> <!--モデル.exists?(条件) -->
+    <% else %>
+      <div class='answer_other'>
+        <h4>※回答済み※</h4>
+      </div>
     <% end %>
   </div>
 </div>

@@ -35,4 +35,9 @@ class AnswersController < ApplicationController
       redirect_to :root
     end
   end
+
+  def update_params
+    params.require(:answer).permit(:text)
+  end
+  
 end

@@ -3,6 +3,7 @@ class Question < ApplicationRecord
   belongs_to :user
   belongs_to :group
   has_many :answers
+  has_one :feed_content, as: :content, dependent: :destroy
 
   #validation
   validates_presence_of :user_id, :text, :group_id

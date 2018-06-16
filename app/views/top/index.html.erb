@@ -18,5 +18,7 @@
     <% end %>
   </div>
 
-  <%= render partial: "questions/question", collection: @questions %>
+  <%= render @feed_contents %>
+  <!-- Answerのインスタンスだった場合は、app/views/answers/_answer.html.erbを呼び、
+  Questionのインスタンスだった場合はapp/views/questions/_question.html.erbを呼び出します。 -->
 <% end %>

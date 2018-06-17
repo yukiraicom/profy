@@ -18,7 +18,8 @@
     <% end %>
   </div>
 
-  <%= render @feed_contents %>
+  <%= render @feed_contents_resource %>
   <!-- Answerのインスタンスだった場合は、app/views/answers/_answer.html.erbを呼び、
   Questionのインスタンスだった場合はapp/views/questions/_question.html.erbを呼び出します。 -->
+  <%= paginate(@feed_contents) %>
 <% end %>

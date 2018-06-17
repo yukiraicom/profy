@@ -10,6 +10,7 @@
     <div class="answerd">
       <%= answer.question.user.name %>の質問「<%= link_to answer.question.text, question_path(answer.question) %>」に回答しました。
     </div>
+    <% if answer.question.answered?(current_user) %>
     <div class="answer_box">
       <span class="a">A</span>
       <span class="answer_text"><%= answer.text %></span>
@@ -19,6 +20,7 @@
         </small>
       <% end %>
     </div>
+    <% end %>
     <% if answer.question.answers.count > 1 %>
       <div class="answer_other">
         <%= link_to "他#{answer.question.answers.count - 1}件の回答を見る", question_path(answer.question) %>
